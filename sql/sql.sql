@@ -1,0 +1,1 @@
+CREATE TABLE "public"."User" ("id" serial,"username" character varying,"password" character varying,"first_name" character varying,"last_name" character varying,"gender" boolean,"updated_at" timestamp DEFAULT NULL,"created_at" timestamp DEFAULT NULL,"disabled" boolean DEFAULT NULL, PRIMARY KEY ("id"));
