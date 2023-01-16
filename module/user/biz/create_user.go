@@ -1,6 +1,7 @@
 package userbiz
 
 import (
+	"be-music/common"
 	"be-music/module/user/model"
 	"context"
 )
@@ -17,7 +18,17 @@ func NewCreateUserBiz(store CreateUserStore) *createUserBiz {
 }
 func (biz *createUserBiz) CreateUser(ctx context.Context, user *model.UserCreate) error {
 	if err := biz.store.CreateUser(ctx, user); err != nil {
-		return err
+		return common.ErrCannotCreateEntity(model.EntityName, err)
 	}
 	return nil
 }
+
+// validate
+// func (user *model.UserCreate) validate() error {
+// 	user.UserName = strings.TrimSpace(user.UserName)
+
+// 	if user.UserName != "" {
+// 		return common.ErrInvalidRequest(err)
+// 	}
+// 	return nil
+// }
